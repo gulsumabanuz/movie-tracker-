@@ -46,3 +46,4 @@ def search_movies(title: str):
     cursor.close()
     conn.close()
     return movies
+    
