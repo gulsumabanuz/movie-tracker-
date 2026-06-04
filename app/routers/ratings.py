@@ -13,19 +13,16 @@ def create_rating(rating: RatingCreate, user_id: int):
     cursor.execute(
         """INSERT INTO reviews (user_id, movie_id, score, mood, watch_again)
         VALUES (%s, %s, %s, %s, %s)""",
-        (user_id, rating.movie_id, rating.score, rating.mood, rating.watch_again),
+
+        # mysql expects just strings not phyton  objects
+        (user_id, rating.movie_id, rating.score, rating.mood.value, rating.watch_again.value),
     )
     conn.commit()
     rating_id = cursor.lastrowid
     cursor.close()
     conn.close()
-    return {
-        "id": rating_id,
-        "movie_id": rating.movie_id,
-        "score": rating.score,
-        "mood": rating.mood,
-        "watch_again": rating.watch_again,
-    }
+    return { "id": rating_id,"movie_id": rating.movie_id,"score": rating.score,
+        "mood": rating.mood,"watch_again": rating.watch_again,  }
 
 
 @router.get("/", response_model=list[RatingResponse])

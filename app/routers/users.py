@@ -28,3 +28,14 @@ def create_user(user: UserCreate):
     cursor.close()
     conn.close()
     return {"id": user_id, "username": user.username, "email": user.email}
+
+@router.get("/", response_model=list[UserResponse])
+def list_users():
+    """Return all users in the database."""
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, username, email FROM users")
+    users = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return users
