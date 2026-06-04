@@ -79,3 +79,9 @@ def test_list_ratings():
     response = client.get("/ratings/", params={"user_id": user["id"]})
     assert response.status_code == 200
     assert isinstance(response.json(), list)
+
+def test_list_users():
+    """Test that users can be listed."""
+    response = client.get("/users/")
+    assert response.status_code == 200
+    assert isinstance(response.json(), list)
