@@ -1,9 +1,9 @@
-fastapi #to write api
-uvicorn #to run api
+fastapi 
+uvicorn 
 mysql-connector-python
 pydantic #looking for if datas valid 
-pytest #requirement
-ruff   #requirement
+pytest 
+ruff   
 python-dotenv
-passlib  #security
-bcrypt  #security 
+passlib  
+bcrypt  

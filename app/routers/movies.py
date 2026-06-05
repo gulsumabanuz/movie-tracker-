@@ -1,16 +1,17 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, status
 from app.database import get_connection
 from app.schemas import MovieCreate, MovieResponse
 
 router = APIRouter(prefix="/movies", tags=["Movies"])
 
 
-@router.post("/", response_model=MovieResponse)
+@router.post("/", response_model=MovieResponse, status_code=status.HTTP_201_CREATED)
 def create_movie(movie: MovieCreate):
+    """Add a new movie, rejecting duplicates."""
 
     conn = get_connection()
 
-    # buffered=True önemli
+    
     cursor = conn.cursor(dictionary=True, buffered=True)
 
     cursor.execute(
@@ -49,6 +50,7 @@ def create_movie(movie: MovieCreate):
 
 @router.get("/", response_model=list[MovieResponse])
 def list_movies():
+    """Return all movies ordered by id."""
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
 
@@ -66,6 +68,7 @@ def list_movies():
 
 @router.get("/search", response_model=list[MovieResponse])
 def search_movies(title: str):
+    """Return movies whose title contains the given string."""
 
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
