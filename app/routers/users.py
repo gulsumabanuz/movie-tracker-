@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from app.database import get_connection
 from app.schemas import UserCreate, UserResponse
 from passlib.context import CryptContext
@@ -13,7 +13,11 @@ def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
 
-@router.post("/", response_model=UserResponse)
+@router.post(
+    "/",
+    response_model=UserResponse,
+    status_code=status.HTTP_201_CREATED,
+)
 def create_user(user: UserCreate):
     """Create a new user with a hashed password."""
     conn = get_connection()

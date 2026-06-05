@@ -17,7 +17,7 @@ def test_create_user():
         "email": f"{unique('email')}@test.com",
         "password": "1234"
     })
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert "username" in response.json()
 
 
@@ -27,7 +27,7 @@ def test_create_movie():
         "title": "Interstellar",
         "release_year": 2014
     })
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json()["title"] == "Interstellar"
 
 
@@ -64,7 +64,7 @@ def test_create_rating():
         "mood": "Tense",
         "watch_again": "Yes"
     })
-    assert response.status_code == 200
+    assert response.status_code == 201
     assert response.json()["score"] == 9
 
 

@@ -1,11 +1,15 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from app.database import get_connection
 from app.schemas import RatingCreate, RatingResponse
 
 router = APIRouter(prefix="/ratings", tags=["Ratings"])
 
 
-@router.post("/", response_model=RatingResponse)
+@router.post(
+    "/",
+    response_model=RatingResponse,
+    status_code=status.HTTP_201_CREATED,
+)
 def create_rating(rating: RatingCreate, user_id: int):
     """Save a user rating for a movie."""
     conn = get_connection()
