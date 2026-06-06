@@ -6,4 +6,4 @@ pytest
 ruff   
 python-dotenv
 passlib  
-bcrypt  
+bcrypt==4.0.1 
