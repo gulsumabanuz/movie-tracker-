@@ -59,7 +59,7 @@ def import_users(conn):
             else:
                 cursor.execute(
                     "INSERT INTO users (username, email, password) VALUES (%s, %s, %s)",
-                    (row["username"], row["email"], row["password"]),
+                    (row["username"], row["email"], "imported_user_no_password"),
                 )
                 imported += 1
 
