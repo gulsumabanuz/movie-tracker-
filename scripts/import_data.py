@@ -1,5 +1,4 @@
 import csv
-import os
 import requests
 
 BASE_URL = "http://api:8000"
