@@ -1,9 +1,10 @@
-fastapi 
-uvicorn 
+fastapi
+uvicorn
 mysql-connector-python
-pydantic #looking for if datas valid 
-pytest 
-ruff   
+pydantic
+pytest
+ruff
 python-dotenv
-passlib  
-bcrypt==4.0.1 
+passlib
+bcrypt==4.0.1
+requests
