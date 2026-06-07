@@ -18,7 +18,7 @@ RETRY_DELAY_SECONDS = 3
 
 
 def get_connection():
-    """Return a new MySQL connection, retrying until the server is ready."""
+    """Return mysql connection, keep try until the server is ready."""
     for attempt in range(MAX_RETRIES):
         try:
             return mysql.connector.connect(**DB_CONFIG)

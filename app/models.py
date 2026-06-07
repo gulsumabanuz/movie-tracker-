@@ -17,38 +17,12 @@ def create_tables():
     """)
 
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS directors (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(100) NOT NULL
-        )
-    """)
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS movies (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            title VARCHAR(200) NOT NULL,
-            release_year INT,
-            director_id INT,
-            FOREIGN KEY (director_id) REFERENCES directors(id)
-        )
-    """)
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS genres (
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(50) NOT NULL
-        )
-    """)
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS movie_genres (
-            movie_id INT,
-            genre_id INT,
-            PRIMARY KEY (movie_id, genre_id),
-            FOREIGN KEY (movie_id) REFERENCES movies(id),
-            FOREIGN KEY (genre_id) REFERENCES genres(id)
-        )
-    """)
+    CREATE TABLE IF NOT EXISTS movies (
+        id INT PRIMARY KEY AUTO_INCREMENT,
+        title VARCHAR(200) NOT NULL,
+        release_year INT
+    )
+""")
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS reviews (

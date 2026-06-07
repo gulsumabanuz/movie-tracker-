@@ -2,7 +2,7 @@ import csv
 import os
 import requests
 
-BASE_URL = "http://localhost:8001"
+BASE_URL = "http://api:8000"
 
 MOVIES_IMPORT_PATH = "exports/movies.csv"
 USERS_IMPORT_PATH = "exports/users.csv"
