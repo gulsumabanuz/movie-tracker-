@@ -18,7 +18,7 @@ def create_rating(rating: RatingCreate, user_id: int):
         """INSERT INTO reviews (user_id, movie_id, score, mood, watch_again)
         VALUES (%s, %s, %s, %s, %s)""",
 
-        # mysql expects just strings not phyton  objects
+        
         (user_id, rating.movie_id, rating.score, rating.mood.value, rating.watch_again.value),
     )
     conn.commit()
